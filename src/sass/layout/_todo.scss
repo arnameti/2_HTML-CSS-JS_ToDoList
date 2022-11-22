@@ -1,0 +1,12 @@
+@use '../util' as u;
+
+.todo-container {
+  width: min(100%, u.rem(800));
+  margin-inline: auto;
+  border: 1px solid var(--clr-whitesmoke);
+}
+
+.heading-1 {
+  text-align: center;
+  margin-block: u.rem(30);
+}
