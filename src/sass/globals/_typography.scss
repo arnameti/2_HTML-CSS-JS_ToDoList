@@ -1,0 +1,28 @@
+@use '../util' as u;
+
+.container-body {
+  background-color: var(--clr-whitesmoke);
+}
+
+ul {
+  list-style-type: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+.heading1,
+.heading2,
+.heading3 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: u.rem(20);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: u.rem(20);
+}
