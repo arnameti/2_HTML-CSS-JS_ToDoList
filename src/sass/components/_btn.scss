@@ -1,9 +1,15 @@
 @use '../util' as u;
 
 .btn {
-  border: 1px solid var(--clr-green);
+  border: 1.5px solid var(--clr-green);
   color: var(--clr-green);
   font-size: u.rem(15);
   padding: u.rem(10);
   border-radius: u.rem(5);
+  transition: all 0.2s linear;
+
+  &:hover {
+    color: var(--clr-black);
+    background-color: var(--clr-green);
+  }
 }

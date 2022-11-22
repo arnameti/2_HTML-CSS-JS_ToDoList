@@ -1,7 +1,7 @@
 @use '../util' as u;
 
 .todo-container {
-  width: min(100%, u.rem(800));
+  width: min(100% - u.rem(40), u.rem(800));
   margin-inline: auto;
   border: 1px solid var(--clr-whitesmoke);
 }
@@ -9,4 +9,30 @@
 .heading-1 {
   text-align: center;
   margin-block: u.rem(30);
+}
+
+.form {
+  display: flex;
+
+  &__input {
+    padding: u.rem(10);
+    font-size: u.rem(16);
+    border: 1.5px solid var(--clr-green);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: calc(100% - u.rem(81.95));
+
+    transition: all 0.1s linear;
+
+    &:focus {
+      outline: none;
+      border-color: var(--clr-green-focus);
+    }
+  }
+
+  &__btn {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-left: none !important;
+  }
 }
