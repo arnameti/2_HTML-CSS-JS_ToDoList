@@ -13,6 +13,7 @@
 
 .form {
   display: flex;
+  margin-bottom: u.rem(40);
 
   &__input {
     padding: u.rem(10);
@@ -35,4 +36,43 @@
     border-bottom-left-radius: 0 !important;
     border-left: none !important;
   }
+}
+
+.todo {
+  margin-bottom: u.rem(80);
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__desc {
+    font-size: u.rem(22);
+  }
+
+  &__icons {
+    display: flex;
+    gap: u.rem(15);
+  }
+
+  &__icon {
+    font-size: u.rem(20);
+
+    &--check {
+      color: var(--clr-green);
+    }
+
+    &--update {
+      color: var(--clr-blue);
+    }
+
+    &--close {
+      color: var(--clr-red);
+    }
+  }
+}
+
+.btn-clear {
+  display: block;
+  margin-inline: auto;
 }
