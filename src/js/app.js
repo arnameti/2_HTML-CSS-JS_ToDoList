@@ -4,8 +4,9 @@ const App = class {
 
   _inputString;
   _toDoArray = [];
+  _id;
 
-  getInputString(inputString) {
+  getAndSaveInputString(inputString) {
     this._inputString = inputString;
     console.log(this._inputString);
     this._clearInput();
@@ -34,19 +35,25 @@ const App = class {
     this.toDoParentEl.insertAdjacentHTML('afterbegin', html);
   }
 
+  getAndSaveId(id) {
+    this._id = id;
+  }
+
+  deleteListElement() {}
+
   _markup(toDo) {
     return `
       <li class="todo__item" data-todo='${toDo.id}'>
         <span class="todo__desc">${toDo.string}</span>
         <!-- prettier-ignore -->
         <div class="todo__icons">
-          <a href="#" data-btn='check'>
+          <a href="#" data-icon='check'>
             <i class="fa-regular fa-circle-check todo__icon todo__icon--check"></i>
           </a>
-          <a href="#" data-btn='update'>
+          <a href="#" data-icon='update'>
             <i class="fa-regular fa-pen-to-square todo__icon todo__icon--update"></i>
           </a>
-          <a href="#" data-btn='close'>
+          <a href="#" data-icon='delete'>
             <i class="fa-regular fa-circle-xmark todo__icon todo__icon--close"></i>
           </a>   
         </div>
