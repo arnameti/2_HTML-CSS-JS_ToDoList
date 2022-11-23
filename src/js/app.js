@@ -5,18 +5,25 @@ const App = class {
   todoContainer = document.querySelector('[data-todo]');
 
   _inputString;
-
-  render() {}
+  _inputStringArray = [];
 
   getInputString(inputString) {
     this._inputString = inputString;
     console.log(this._inputString);
-    this.clearInput();
+    this._clearInput();
+    this._pushStringToArray();
   }
 
-  clearInput() {
+  _clearInput() {
     this.inputEl.value = '';
   }
+
+  _pushStringToArray() {
+    this._inputStringArray.push(this._inputString);
+    console.log(this._inputStringArray);
+  }
+
+  render() {}
 };
 
 export default new App();
