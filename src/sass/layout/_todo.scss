@@ -1,9 +1,9 @@
 @use '../util' as u;
 
-.todo-container {
+.container {
+  border: 1px solid var(--clr-whitesmoke);
   width: min(100% - u.rem(40), u.rem(800));
   margin-inline: auto;
-  border: 1px solid var(--clr-whitesmoke);
 }
 
 .heading-1 {
@@ -44,6 +44,7 @@
   &__item {
     display: flex;
     justify-content: space-between;
+    margin-bottom: u.rem(20);
   }
 
   &__desc {
