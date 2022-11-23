@@ -3,36 +3,41 @@ const App = class {
   inputEl = document.querySelector('[data-input]');
 
   _inputString;
-  _inputStringArray = [];
+  _toDoArray = [];
 
   getInputString(inputString) {
     this._inputString = inputString;
     console.log(this._inputString);
     this._clearInput();
-    this._pushStringToArray();
+    this._createToDoAndPushToArray();
   }
 
   _clearInput() {
     this.inputEl.value = '';
   }
 
-  _pushStringToArray() {
-    this._inputStringArray.push(this._inputString);
-    console.log(this._inputStringArray);
+  _createToDoAndPushToArray() {
+    const toDo = {
+      string: this._inputString,
+      id: Date.now(),
+    };
+
+    this._toDoArray.push(toDo);
+    console.log(this._toDoArray);
   }
 
   renderToDo() {
     let html = '';
-    this._inputStringArray.forEach(string => (html += this._markup(string)));
+    this._toDoArray.forEach(toDo => (html += this._markup(toDo)));
 
     this.toDoParentEl.innerHTML = '';
     this.toDoParentEl.insertAdjacentHTML('afterbegin', html);
   }
 
-  _markup(string) {
+  _markup(toDo) {
     return `
-      <li class="todo__item" data-todo>
-        <span class="todo__desc">${string}</span>
+      <li class="todo__item" data-todo='${toDo.id}'>
+        <span class="todo__desc">${toDo.string}</span>
         <!-- prettier-ignore -->
         <div class="todo__icons">
           <a href="#" data-btn='check'>
