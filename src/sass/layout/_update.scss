@@ -1,0 +1,33 @@
+@use '../util' as u;
+
+.update {
+  &__lock-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--overlay);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__window {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: var(--clr-whitesmoke);
+    padding: u.rem(15);
+    width: min(95%, 500px);
+    height: 150px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.2);
+  }
+
+  &__form {
+    margin: 0;
+  }
+}
