@@ -9,7 +9,7 @@ formEl.addEventListener('submit', function (e) {
 
   const inputString = inputEl.value;
   app.getAndSaveInputString(inputString);
-  app.renderToDo();
+  app.renderToDos();
 });
 
 conctainerEL.addEventListener('click', function (e) {
@@ -19,8 +19,10 @@ conctainerEL.addEventListener('click', function (e) {
 
   if (clicked.dataset.icon === 'delete') {
     const listEl = clicked.closest('[data-todo]');
-    const id = listEl.dataset.todo;
+    const id = +listEl.dataset.todo;
 
     app.getAndSaveId(id);
+    app.deleteToDoElement();
+    app.renderToDos();
   }
 });

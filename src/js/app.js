@@ -5,10 +5,10 @@ const App = class {
   _inputString;
   _toDoArray = [];
   _id;
+  _idToDelete;
 
   getAndSaveInputString(inputString) {
     this._inputString = inputString;
-    console.log(this._inputString);
     this._clearInput();
     this._createToDoAndPushToArray();
   }
@@ -24,22 +24,15 @@ const App = class {
     };
 
     this._toDoArray.push(toDo);
-    console.log(this._toDoArray);
   }
 
-  renderToDo() {
+  renderToDos() {
     let html = '';
     this._toDoArray.forEach(toDo => (html += this._markup(toDo)));
 
     this.toDoParentEl.innerHTML = '';
     this.toDoParentEl.insertAdjacentHTML('afterbegin', html);
   }
-
-  getAndSaveId(id) {
-    this._id = id;
-  }
-
-  deleteListElement() {}
 
   _markup(toDo) {
     return `
@@ -59,6 +52,19 @@ const App = class {
         </div>
       </li>
     `;
+  }
+
+  deleteToDoElement() {
+    this.findIndex();
+    this._toDoArray.splice(this._idToDelete, 1);
+  }
+
+  getAndSaveId(id) {
+    this._id = id;
+  }
+
+  findIndex() {
+    this._idToDelete = this._toDoArray.findIndex(todo => todo.id === this._id);
   }
 };
 
