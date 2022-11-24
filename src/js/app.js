@@ -1,4 +1,8 @@
 const App = class {
+  constructor() {
+    this.renderToDos();
+  }
+
   toDoParentEl = document.querySelector('[data-todo]');
   inputEl = document.querySelector('[data-input]');
 
@@ -7,31 +11,9 @@ const App = class {
   _id;
   _idToDelete;
 
-  getAndSaveInputString(inputString) {
-    this._inputString = inputString;
-    this._clearInput();
-    this._createToDoAndPushToArray();
-    this.setArrayToLocalStorage();
-  }
-
-  _clearInput() {
-    this.inputEl.value = '';
-  }
-
-  _createToDoAndPushToArray() {
-    const toDo = {
-      string: this._inputString,
-      id: Date.now(),
-    };
-
-    this._toDoArray.push(toDo);
-  }
-
-  setArrayToLocalStorage() {
-    window.localStorage.setItem('toDos', JSON.stringify(this._toDoArray));
-  }
-
   renderToDos() {
+    this.getArrayFromLocalStorage();
+
     let html = '';
     this._toDoArray.forEach(toDo => (html += this._markup(toDo)));
 
@@ -57,6 +39,42 @@ const App = class {
         </div>
       </li>
     `;
+  }
+
+  getAndSaveInputString(inputString) {
+    this._inputString = inputString;
+    console.log(this._inputString);
+    this._clearInput();
+    this._createToDoAndPushToArray();
+  }
+
+  _clearInput() {
+    this.inputEl.value = '';
+  }
+
+  _createToDoAndPushToArray() {
+    const toDo = {
+      string: this._inputString,
+      id: Date.now(),
+    };
+
+    console.log(toDo);
+
+    this._toDoArray.push(toDo);
+
+    this.setArrayToLocalStorage();
+  }
+
+  setArrayToLocalStorage() {
+    localStorage.setItem('toDos', JSON.stringify(this._toDoArray));
+  }
+
+  getArrayFromLocalStorage() {
+    if (JSON.parse(localStorage.getItem('toDos')) === null) {
+      this._toDoArray = [];
+    } else {
+      this._toDoArray = JSON.parse(localStorage.getItem('toDos'));
+    }
   }
 
   deleteToDoElement() {
