@@ -58,8 +58,6 @@ const App = class {
       id: Date.now(),
     };
 
-    console.log(toDo);
-
     this._toDoArray.push(toDo);
 
     this.setArrayToLocalStorage();
