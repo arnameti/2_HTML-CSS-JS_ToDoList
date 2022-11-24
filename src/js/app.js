@@ -11,6 +11,7 @@ const App = class {
     this._inputString = inputString;
     this._clearInput();
     this._createToDoAndPushToArray();
+    this.setArrayToLocalStorage();
   }
 
   _clearInput() {
@@ -24,6 +25,10 @@ const App = class {
     };
 
     this._toDoArray.push(toDo);
+  }
+
+  setArrayToLocalStorage() {
+    window.localStorage.setItem('toDos', JSON.stringify(this._toDoArray));
   }
 
   renderToDos() {
