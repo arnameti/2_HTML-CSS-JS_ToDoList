@@ -80,6 +80,7 @@ const App = class {
   deleteToDoElement() {
     this.findIndex();
     this._toDoArray.splice(this._idToDelete, 1);
+    this.setArrayToLocalStorage();
   }
 
   getAndSaveId(id) {
