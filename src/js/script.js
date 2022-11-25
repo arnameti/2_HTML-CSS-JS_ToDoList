@@ -6,6 +6,7 @@ const inputEl = formEl.querySelector('[data-input]');
 const lockOverlayEl = document.querySelector('[data-lock-overlay]');
 const updateFormEl = document.querySelector('[data-update-form]');
 const updateInputEl = document.querySelector('[data-update-input]');
+const clearItemsBtnEl = document.querySelector('[data-btn="clearItems"]');
 
 formEl.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -63,4 +64,9 @@ updateFormEl.addEventListener('submit', function (e) {
   app.updateToDoElement(inputString);
   app.renderToDos();
   lockOverlayEl.dataset.lockOverlay = 'invisible';
+});
+
+clearItemsBtnEl.addEventListener('click', function () {
+  app.clearItems();
+  app.renderToDos();
 });

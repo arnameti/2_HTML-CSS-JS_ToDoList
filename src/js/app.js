@@ -97,6 +97,11 @@ const App = class {
   findIndex() {
     this._findedID = this._toDoArray.findIndex(todo => todo.id === this._id);
   }
+
+  clearItems() {
+    this._toDoArray = [];
+    this.setArrayToLocalStorage();
+  }
 };
 
 export default new App();
