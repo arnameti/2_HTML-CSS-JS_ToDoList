@@ -11,36 +11,6 @@ const App = class {
   _id;
   _idToDelete;
 
-  renderToDos() {
-    this.getArrayFromLocalStorage();
-
-    let html = '';
-    this._toDoArray.forEach(toDo => (html += this._markup(toDo)));
-
-    this.toDoParentEl.innerHTML = '';
-    this.toDoParentEl.insertAdjacentHTML('afterbegin', html);
-  }
-
-  _markup(toDo) {
-    return `
-      <li class="todo__item" data-todo='${toDo.id}'>
-        <span class="todo__desc">${toDo.string}</span>
-        <!-- prettier-ignore -->
-        <div class="todo__icons">
-          <a href="#" data-icon='check'>
-            <i class="fa-regular fa-circle-check todo__icon todo__icon--check"></i>
-          </a>
-          <a href="#" data-icon='update'>
-            <i class="fa-regular fa-pen-to-square todo__icon todo__icon--update"></i>
-          </a>
-          <a href="#" data-icon='delete'>
-            <i class="fa-regular fa-circle-xmark todo__icon todo__icon--close"></i>
-          </a>   
-        </div>
-      </li>
-    `;
-  }
-
   getAndSaveInputString(inputString) {
     this._inputString = inputString;
     console.log(this._inputString);
@@ -67,12 +37,42 @@ const App = class {
     localStorage.setItem('toDos', JSON.stringify(this._toDoArray));
   }
 
+  renderToDos() {
+    this.getArrayFromLocalStorage();
+
+    let html = '';
+    this._toDoArray.forEach(toDo => (html += this._markup(toDo)));
+
+    this.toDoParentEl.innerHTML = '';
+    this.toDoParentEl.insertAdjacentHTML('afterbegin', html);
+  }
+
   getArrayFromLocalStorage() {
     if (JSON.parse(localStorage.getItem('toDos')) === null) {
       this._toDoArray = [];
     } else {
       this._toDoArray = JSON.parse(localStorage.getItem('toDos'));
     }
+  }
+
+  _markup(toDo) {
+    return `
+      <li class="todo__item" data-todo='${toDo.id}'>
+        <span class="todo__desc">${toDo.string}</span>
+        <!-- prettier-ignore -->
+        <div class="todo__icons">
+          <a href="#" data-icon='check'>
+            <i class="fa-regular fa-circle-check todo__icon todo__icon--check"></i>
+          </a>
+          <a href="#" data-icon='update'>
+            <i class="fa-regular fa-pen-to-square todo__icon todo__icon--update"></i>
+          </a>
+          <a href="#" data-icon='delete'>
+            <i class="fa-regular fa-circle-xmark todo__icon todo__icon--close"></i>
+          </a>   
+        </div>
+      </li>
+    `;
   }
 
   deleteToDoElement() {
@@ -83,6 +83,7 @@ const App = class {
 
   getAndSaveId(id) {
     this._id = id;
+    console.log(this._id);
   }
 
   findIndex() {

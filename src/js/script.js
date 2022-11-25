@@ -3,6 +3,7 @@ import app from './app';
 const conctainerEL = document.querySelector('[data-container]');
 const formEl = document.querySelector('[data-form]');
 const inputEl = formEl.querySelector('[data-input]');
+const lockOverlayEl = document.querySelector('[data-lock-overlay]');
 
 formEl.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -24,5 +25,9 @@ conctainerEL.addEventListener('click', function (e) {
     app.getAndSaveId(id);
     app.deleteToDoElement();
     app.renderToDos();
+  }
+
+  if (clicked.dataset.icon === 'update') {
+    lockOverlayEl.dataset.lockOverlay = 'visible';
   }
 });
