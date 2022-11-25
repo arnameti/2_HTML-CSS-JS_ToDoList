@@ -9,13 +9,14 @@ const App = class {
   _inputString;
   _toDoArray = [];
   _id;
-  _idToDelete;
+  _findedID;
 
   getAndSaveInputString(inputString) {
     this._inputString = inputString;
-    console.log(this._inputString);
+
     this._clearInput();
     this._createToDoAndPushToArray();
+    console.log(this._toDoArray);
   }
 
   _clearInput() {
@@ -75,9 +76,16 @@ const App = class {
     `;
   }
 
+  updateToDoElement(inputString) {
+    this._inputString = inputString;
+    this.findIndex();
+    this._toDoArray[this._findedID].string = this._inputString;
+    this.setArrayToLocalStorage();
+  }
+
   deleteToDoElement() {
     this.findIndex();
-    this._toDoArray.splice(this._idToDelete, 1);
+    this._toDoArray.splice(this._findedID, 1);
     this.setArrayToLocalStorage();
   }
 
@@ -87,7 +95,7 @@ const App = class {
   }
 
   findIndex() {
-    this._idToDelete = this._toDoArray.findIndex(todo => todo.id === this._id);
+    this._findedID = this._toDoArray.findIndex(todo => todo.id === this._id);
   }
 };
 
