@@ -31,3 +31,13 @@ conctainerEL.addEventListener('click', function (e) {
     lockOverlayEl.dataset.lockOverlay = 'visible';
   }
 });
+
+window.addEventListener('keyup', function (e) {
+  e.preventDefault();
+
+  if (e.key !== 'Escape') return;
+
+  if ((lockOverlayEl.dataset.lockOverlay = 'visible')) {
+    lockOverlayEl.dataset.lockOverlay = 'invisible';
+  }
+});
